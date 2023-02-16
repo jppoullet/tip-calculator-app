@@ -1,44 +1,93 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
 
-  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
-  
-  <title>Frontend Mentor | Tip calculator app</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
-</head>
-<body>
+    <title>Frontend Mentor | Tip calculator app</title>
 
-  Bill
+    <style>
+      .attribution {
+        font-size: 11px;
+        text-align: center;
+      }
+      .attribution a {
+        color: hsl(228, 45%, 44%);
+      }
+    </style>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <h1>SPLI<br />TTER</h1>
+    </header>
+    <main>
+      <form action="">
+        <section class="calculator">
+          <section>
+            <label for="bill"><h2>Bill</h2></label>
+            <input type="text" id="bill" name="bill" placeholder="0" />
+          </section>
+          <h2>Select Tip %</h2>
+          <section class="tipSelection">
+            <input type="radio" id="5-percent" name="tipPercent" />
+            <label for="5-percent" class="tipPercentLabel">5%</label>
 
-  Select Tip %
-  5%
-  10%
-  15%
-  25%
-  50%
-  Custom
+            <input type="radio" id="10-percent" name="tipPercent" />
+            <label for="10-percent" class="tipPercentLabel">10%</label>
 
-  Number of People
+            <input type="radio" id="15-percent" name="tipPercent" />
+            <label for="15-percent" class="tipPercentLabel">15%</label>
 
-  Tip Amount
-  / person
+            <input type="radio" id="25-percent" name="tipPercent" />
+            <label for="25-percent" class="tipPercentLabel">25%</label>
 
-  Total
-  / person
+            <input type="radio" id="50-percent" name="tipPercent" />
+            <label for="50-percent" class="tipPercentLabel">50%</label>
 
-  Reset
-  
-  <div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
-  </div>
-</body>
+            <input
+              type="text"
+              id="custom"
+              name="customTipPercent"
+              placeholder="Custom"
+            />
+          </section>
+          <section>
+            <!-- <h2>Number of People</h2> -->
+            <label for="people"><h2>Number of People</h2></label>
+            <input type="text" name="people" id="people" />
+          </section>
+        </section>
+
+        <section class="totals">
+          <div>Tip Amount / person</div>
+          <div>$</div>
+          <div>Total / person</div>
+          <div>$</div>
+          <input type="reset" value="RESET" />
+        </section>
+      </form>
+
+      <!-- <div class="attribution">
+        Challenge by
+        <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+          >Frontend Mentor</a
+        >. Coded by <a href="#">Your Name Here</a>.
+      </div> -->
+    </main>
+  </body>
 </html>
