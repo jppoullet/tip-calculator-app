@@ -1,29 +1,66 @@
-const bills = [22, 292, 176, 440, 37, 105, 10, 1100, 86, 52];
-const tips = [];
-const totals = [];
+"use strict";
 
-function calcTip(bill) {
-  if (bill >= 50 && bill <= 300) {
-    let tip = bill * 0.15;
-    return tip;
-  } else {
-    let tip = bill * 0.2;
-    return tip;
+const bill = document.getElementById("bill");
+const tipPercentSelected = document.querySelectorAll(
+  'input[name="tipPercent"]'
+);
+const tipAmount = document.querySelector(".tipDollarAmount");
+const totalDollarAmount = document.querySelector(".totalDollarAmount");
+let numberOfPeople = document.getElementById("people");
+
+function calcTip() {
+  for (let i = 0; i < tipPercentSelected.length; i++) {
+    document;
+    tipPercentSelected[i].addEventListener("click", function () {
+      let tip = this.value / 100;
+      let billValue = Number(bill.value);
+      let tipPerPerson = (tip * billValue) / numberOfPeople.value;
+      let totalPerPerson = (billValue + tipPerPerson) / numberOfPeople.value;
+
+      console.log(tip);
+      console.log(billValue);
+      console.log(billValue + tipPerPerson);
+      tipAmount.textContent = `$${tipPerPerson}`;
+      totalDollarAmount.textContent = totalPerPerson;
+    });
   }
 }
 
-for (let i = 0; i <= bills.length - 1; i++) {
-  tips.push(calcTip(bills[i]));
-  totals.push(bills[i] + tips[i]);
-  console.log(`Bill = $${bills[i]}, Tip = $${tips[i]}, Total = $${totals[i]}`);
+function resetTotals() {
+  tipAmount.textContent = "$0.00";
+  totalDollarAmount.textContent = "$0.00";
 }
 
-console.log("------Bonus Challenge------");
+calcTip();
+resetTotals();
 
-const arr = [22, 292, 176, 440, 37, 105, 10, 1100, 86, 52];
+// --Previous practice challenges from Udemy, using as reference--
 
-for (let sum = 0; sum < sum.length; sum++)
+// const bills = [22, 292, 176, 440, 37, 105, 10, 1100, 86, 52];
+// const tips = [];
+// const totals = [];
 
+// function calcTip(bill) {
+//   if (bill >= 50 && bill <= 300) {
+//     let tip = bill * 0.15;
+//     return tip;
+//   } else {
+//     let tip = bill * 0.2;
+//     return tip;
+//   }
+// }
+
+// for (let i = 0; i <= bills.length - 1; i++) {
+//   tips.push(calcTip(bills[i]));
+//   totals.push(bills[i] + tips[i]);
+//   console.log(`Bill = $${bills[i]}, Tip = $${tips[i]}, Total = $${totals[i]}`);
+// }
+
+// console.log("------Bonus Challenge------");
+
+// const arr = [22, 292, 176, 440, 37, 105, 10, 1100, 86, 52];
+
+// for (let sum = 0; sum < sum.length; sum++)
 
 //Coding Challenge #2
 

@@ -40,23 +40,29 @@
         <section class="calculator">
           <section>
             <label for="bill"><h2>Bill</h2></label>
-            <input type="text" id="bill" name="bill" placeholder="0" />
+            <input
+              type="text"
+              id="bill"
+              name="bill"
+              placeholder="0"
+              class="inputBillPeople"
+            />
           </section>
           <h2>Select Tip %</h2>
           <section class="tipSelection">
-            <input type="radio" id="5-percent" name="tipPercent" />
+            <input type="radio" id="5-percent" name="tipPercent" value="5" />
             <label for="5-percent" class="tipPercentLabel">5%</label>
 
-            <input type="radio" id="10-percent" name="tipPercent" />
+            <input type="radio" id="10-percent" name="tipPercent" value="10" />
             <label for="10-percent" class="tipPercentLabel">10%</label>
 
-            <input type="radio" id="15-percent" name="tipPercent" />
+            <input type="radio" id="15-percent" name="tipPercent" value="15" />
             <label for="15-percent" class="tipPercentLabel">15%</label>
 
-            <input type="radio" id="25-percent" name="tipPercent" />
+            <input type="radio" id="25-percent" name="tipPercent" value="25" />
             <label for="25-percent" class="tipPercentLabel">25%</label>
 
-            <input type="radio" id="50-percent" name="tipPercent" />
+            <input type="radio" id="50-percent" name="tipPercent" value="50" />
             <label for="50-percent" class="tipPercentLabel">50%</label>
 
             <input
@@ -69,16 +75,30 @@
           <section>
             <!-- <h2>Number of People</h2> -->
             <label for="people"><h2>Number of People</h2></label>
-            <input type="text" name="people" id="people" />
+            <input
+              type="text"
+              name="people"
+              id="people"
+              class="inputBillPeople"
+              placeholder="0"
+            />
           </section>
         </section>
 
         <section class="totals">
-          <div>Tip Amount / person</div>
-          <div>$</div>
-          <div>Total / person</div>
-          <div>$</div>
-          <input type="reset" value="RESET" />
+          <div>
+            <h2>Tip Amount</h2>
+
+            <p>/ person</p>
+          </div>
+          <div class="tipDollarAmount">$0.00</div>
+          <div>
+            <h2>Total</h2>
+
+            <p>/ person</p>
+          </div>
+          <div class="totalDollarAmount">$0.00</div>
+          <input type="reset" value="RESET" onclick="resetTotals()" />
         </section>
       </form>
 
@@ -89,5 +109,6 @@
         >. Coded by <a href="#">Your Name Here</a>.
       </div> -->
     </main>
+    <script src="script.js"></script>
   </body>
 </html>
