@@ -36,7 +36,7 @@ h2 {
 }
 
 form {
-  position: absolute;
+  /* position: absolute; */
   bottom: 0;
   top: 110px;
   background-color: var(--clrWhite);
@@ -48,23 +48,37 @@ input {
   text-align: right;
 }
 
-.inputBillPeople {
-  margin: 10px 0 30px;
-}
-
 input,
 label {
   border-radius: 5px;
 }
 
-input[type="text"],
-input[type="number"] {
+.bill_input,
+.people_input {
+  margin: 10px 0 30px;
+}
+
+.bill_input,
+.people_input,
+.tipPercentCustom {
   background-color: var(--clrVeryLightGrayishCyan);
   border: none;
   width: 100%;
 }
 
-input[name="customTipPercent"]::placeholder {
+.bill_input {
+  background-image: url(images/icon-dollar.svg);
+  background-repeat: no-repeat;
+  background-position: 12px 9px;
+}
+
+.people_input {
+  background-image: url(images/icon-person.svg);
+  background-repeat: no-repeat;
+  background-position: 12px 9px;
+}
+
+input[name="tipPercentCustom"]::placeholder {
   text-align: center;
 }
 
@@ -77,6 +91,23 @@ input[type="reset"] {
   width: 100%;
   text-align: center;
   grid-column: 1 / span 2;
+  cursor: pointer;
+}
+
+input[type="reset"]:hover {
+  color: var(--clrPrimary);
+  background-color: var(--clrWhite);
+}
+
+.numberPeople {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.errorMsg {
+  display: none;
+  color: green;
 }
 
 /* Radio and Label Styling */
@@ -84,16 +115,23 @@ input[type="radio"] {
   display: none;
 }
 
-input[type="radio"]:checked + .tipPercentLabel {
-  color: var(--clrVeryDarkCyan);
-  background-color: var(--clrPrimary);
-}
-
 .tipPercentLabel {
   color: var(--clrVeryLightGrayishCyan);
   background-color: var(--clrVeryDarkCyan);
   padding: 5px 10px;
   text-align: center;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.selected {
+  color: var(--clrVeryDarkCyan);
+  background-color: var(--clrPrimary);
+}
+
+.tipPercentLabel:hover {
+  color: var(--clrVeryDarkCyan);
+  background-color: var(--clrPrimary);
 }
 
 .tipSelection {
@@ -128,5 +166,20 @@ input[type="radio"]:checked + .tipPercentLabel {
   font-size: 1.2em;
 }
 
-@media (max-width: 670px) {
+@media (min-width: 840px) {
+  form {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(100px, 1fr));
+    gap: 30px;
+    margin-left: 80px;
+    margin-right: 80px;
+    border-radius: 20px;
+  }
+
+  .tipSelection {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(5px, 1fr));
+    gap: 0.6em;
+    margin: 10px 0 30px;
+  }
 }

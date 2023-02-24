@@ -33,24 +33,27 @@
   </head>
   <body>
     <header>
-      <h1>SPLI<br />TTER</h1>
+      <img src="images/logo.svg" alt="" />
     </header>
     <main>
-      <form action="">
+      <form action="" id="form">
         <section class="calculator">
           <section>
-            <label for="bill"><h2>Bill</h2></label>
-            <input
-              type="text"
-              id="bill"
-              name="bill"
-              placeholder="0"
-              class="inputBillPeople"
-            />
+            <h2>Bill</h2>
+            <div>
+              <input
+                type="number"
+                id="bill"
+                name="bill"
+                placeholder="0"
+                class="bill_input"
+                required
+              />
+            </div>
           </section>
           <h2>Select Tip %</h2>
           <section class="tipSelection">
-            <input type="radio" id="5-percent" name="tipPercent" value="5" />
+            <!-- <input type="radio" id="5-percent" name="tipPercent" value="5" />
             <label for="5-percent" class="tipPercentLabel">5%</label>
 
             <input type="radio" id="10-percent" name="tipPercent" value="10" />
@@ -63,24 +66,35 @@
             <label for="25-percent" class="tipPercentLabel">25%</label>
 
             <input type="radio" id="50-percent" name="tipPercent" value="50" />
-            <label for="50-percent" class="tipPercentLabel">50%</label>
+            <label for="50-percent" class="tipPercentLabel">50%</label> -->
+
+            <div class="tipPercentLabel">5%</div>
+            <div class="tipPercentLabel">10%</div>
+            <div class="tipPercentLabel">15%</div>
+            <div class="tipPercentLabel">25%</div>
+            <div class="tipPercentLabel">50%</div>
 
             <input
-              type="text"
+              type="number"
               id="custom"
-              name="customTipPercent"
+              class="tipPercentCustom"
+              name="tipPercentCustom"
               placeholder="Custom"
             />
           </section>
           <section>
-            <!-- <h2>Number of People</h2> -->
-            <label for="people"><h2>Number of People</h2></label>
+            <div class="numberPeople">
+              <h2>Number of People</h2>
+              <h2 class="errorMsg">Can't be zero</h2>
+            </div>
+
             <input
-              type="text"
+              type="number"
               name="people"
               id="people"
-              class="inputBillPeople"
+              class="people_input errorBorder"
               placeholder="0"
+              required
             />
           </section>
         </section>
@@ -101,13 +115,6 @@
           <input type="reset" value="RESET" onclick="resetTotals()" />
         </section>
       </form>
-
-      <!-- <div class="attribution">
-        Challenge by
-        <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
-          >Frontend Mentor</a
-        >. Coded by <a href="#">Your Name Here</a>.
-      </div> -->
     </main>
     <script src="script.js"></script>
   </body>

@@ -1,99 +1,94 @@
 "use strict";
 
-const bill = document.getElementById("bill");
-const tipPercentSelected = document.querySelectorAll(
-  'input[name="tipPercent"]'
-);
+const billInput = document.getElementById("bill");
+const numberPeopleInput = document.getElementById("people");
+const tipPercent = document.querySelectorAll(".tipPercentLabel");
 const tipAmount = document.querySelector(".tipDollarAmount");
 const totalDollarAmount = document.querySelector(".totalDollarAmount");
-let numberOfPeople = document.getElementById("people");
+const tipPercentCustom = document.querySelector(".tipPercentCustom");
+
+billInput.value = 0.0;
+numberPeopleInput.value = 0;
+
+tipPercent.forEach((selected) => {
+  selected.addEventListener("click", handleClick);
+});
 
 function calcTip() {
-  for (let i = 0; i < tipPercentSelected.length; i++) {
-    document;
-    tipPercentSelected[i].addEventListener("click", function () {
-      let tip = this.value / 100;
-      let billValue = Number(bill.value);
-      let tipPerPerson = (tip * billValue) / numberOfPeople.value;
-      let totalPerPerson = (billValue + tipPerPerson) / numberOfPeople.value;
+  if (numberPeopleValue >= 1 && billValue >= 1 && tip >= 0.01) {
+    let tipPerPerson = (tip * billValue) / numberPeopleValue;
+    let totalPerPerson = billValue / numberPeopleValue + tipPerPerson;
 
-      console.log(tip);
-      console.log(billValue);
-      console.log(billValue + tipPerPerson);
-      tipAmount.textContent = `$${tipPerPerson}`;
-      totalDollarAmount.textContent = totalPerPerson;
-    });
+    console.log(`tip: ${tip}`);
+    console.log(`tipPerPerson ${tipPerPerson}`);
+    tipAmount.textContent = `$${tipPerPerson.toFixed(2)}`;
+    totalDollarAmount.textContent = `$${totalPerPerson.toFixed(2)}`;
   }
+}
+
+billInput.addEventListener("input", billInputFunc);
+numberPeopleInput.addEventListener("input", numberPeopleInputFunc);
+tipPercentCustom.addEventListener("input", customTipInput);
+
+let billValue;
+let numberPeopleValue;
+let tip;
+
+function billInputFunc() {
+  billValue = parseFloat(billInput.value);
+  console.log(`bill: ${billValue}`);
+  calcTip();
+}
+
+function numberPeopleInputFunc() {
+  numberPeopleValue = parseFloat(numberPeopleInput.value);
+  console.log(`numberpeople: ${numberPeopleValue}`);
+
+  if (numberPeopleValue < 1) {
+    document.querySelector(".errorMsg").style.display = "inline";
+    document.querySelector(".errorBorder").style.border = "2px solid green";
+  } else {
+    document.querySelector(".errorMsg").style.display = "none";
+    document.querySelector(".errorBorder").style.border = "none";
+    calcTip();
+  }
+}
+
+function customTipInput() {
+  tip = parseFloat(tipPercentCustom.value / 100);
+
+  tipPercent.forEach((val) => {
+    val.classList.remove("selected");
+  });
+  console.log(`customTip: ${tip}`);
+  calcTip();
+}
+
+function handleClick(event) {
+  tipPercent.forEach((val) => {
+    val.classList.remove("selected");
+    if (event.target.innerHTML == val.innerHTML) {
+      val.classList.add("selected");
+      tip = parseFloat(val.innerHTML) / 100;
+    }
+  });
+  console.log(`tip: ${tip}`);
+  calcTip();
 }
 
 function resetTotals() {
   tipAmount.textContent = "$0.00";
   totalDollarAmount.textContent = "$0.00";
+  billValue = 0.0;
+  numberPeopleValue = 0;
+
+  tipPercent.forEach((val) => {
+    val.classList.remove("selected");
+  });
+  document.querySelector(".errorMsg").style.display = "none";
+  document.querySelector(".errorBorder").style.border = "none";
 }
 
-calcTip();
-resetTotals();
-
-// --Previous practice challenges from Udemy, using as reference--
-
-// const bills = [22, 292, 176, 440, 37, 105, 10, 1100, 86, 52];
-// const tips = [];
-// const totals = [];
-
-// function calcTip(bill) {
-//   if (bill >= 50 && bill <= 300) {
-//     let tip = bill * 0.15;
-//     return tip;
-//   } else {
-//     let tip = bill * 0.2;
-//     return tip;
-//   }
-// }
-
-// for (let i = 0; i <= bills.length - 1; i++) {
-//   tips.push(calcTip(bills[i]));
-//   totals.push(bills[i] + tips[i]);
-//   console.log(`Bill = $${bills[i]}, Tip = $${tips[i]}, Total = $${totals[i]}`);
-// }
-
-// console.log("------Bonus Challenge------");
-
-// const arr = [22, 292, 176, 440, 37, 105, 10, 1100, 86, 52];
-
-// for (let sum = 0; sum < sum.length; sum++)
-
-//Coding Challenge #2
-
-// const bill = 1000;
-
-// function calcTip(bill) {
-//     if (bill >= 50 && bill <= 300) {
-//         let tip = bill * .15;
-//         return tip;
-//     } else {
-//         let tip = bill * .20;
-//         return tip;
-//     }
-// }
-
-// console.log(calcTip(bill));
-
-// const bills = [125, 555, 44];
-// const tips = [calcTip(bills[0]), calcTip(bills[1]), calcTip(bills[2])];
-// console.log(tips);
-// // console.log(44 * .20);
-
-// const total = [calcTip(bills[0]) + bills[0], calcTip(bills[1]) + bills[1], calcTip(bills[2] + bills[2])];
-// console.log(total);
-
-// Object Methods
-// const jonas = {
-//     firstName: "Jonas",
-//     friends: ['Michael', 'Steve', 'Bob'],
-//     age: 46,
-//     job: "teacher",
-//     driversLicense: false,
-//     getSummary: function () {
-//         return `${this.firstName} is a ${this.age}-year old ${this.job}, and he has ${this.driversLicense ? "a" : "no"} driver's license.`
-//     }
-// };
+// tipSelection();
+// resetTotals();
+// calcTip();
