@@ -11,8 +11,14 @@ billInput.value = 0.0;
 numberPeopleInput.value = 0;
 
 tipPercent.forEach((selected) => {
-  selected.addEventListener("click", handleClick);
+  selected.addEventListener("pointerdown", handleClick);
 });
+
+// tipPercent.forEach((selected) => {
+//   selected.addEventListener("pointerdown", function () {
+//     console.log("pointer down");
+//   });
+// });
 
 function calcTip() {
   if (numberPeopleValue >= 1 && billValue >= 1 && tip >= 0.01) {

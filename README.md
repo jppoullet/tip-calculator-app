@@ -45,16 +45,18 @@ Users should be able to:
 
 ### What I learned
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
-
-To see how you can add code snippets, see below:
-
 ```html
 
 ```
 
 ```css
+.people_input {
+  background-image: url(images/icon-person.svg);
+  background-repeat: no-repeat;
+  background-position: 12px 9px;
+}
 
+grid-template-columns: repeat(2, minmax(100px, 1fr));
 ```
 
 ```js
