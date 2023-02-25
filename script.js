@@ -6,20 +6,17 @@ const tipPercent = document.querySelectorAll(".tipPercentLabel");
 const tipAmount = document.querySelector(".tipDollarAmount");
 const totalDollarAmount = document.querySelector(".totalDollarAmount");
 const tipPercentCustom = document.querySelector(".tipPercentCustom");
+const reset = document.querySelector("input[type='reset']");
 
-billInput.value = 0.0;
-numberPeopleInput.value = 0;
+billInput.value = "";
+numberPeopleInput.value = "";
 
+// Tip button selection
 tipPercent.forEach((selected) => {
   selected.addEventListener("pointerdown", handleClick);
 });
 
-// tipPercent.forEach((selected) => {
-//   selected.addEventListener("pointerdown", function () {
-//     console.log("pointer down");
-//   });
-// });
-
+// Calculate tip per person and total per person
 function calcTip() {
   if (numberPeopleValue >= 1 && billValue >= 1 && tip >= 0.01) {
     let tipPerPerson = (tip * billValue) / numberPeopleValue;
@@ -40,12 +37,14 @@ let billValue;
 let numberPeopleValue;
 let tip;
 
+// Store bill amount to billValue
 function billInputFunc() {
   billValue = parseFloat(billInput.value);
   console.log(`bill: ${billValue}`);
   calcTip();
 }
 
+// Store number of people to numberPeopleValue variable, trigger error styling if number of people is < 1
 function numberPeopleInputFunc() {
   numberPeopleValue = parseFloat(numberPeopleInput.value);
   console.log(`numberpeople: ${numberPeopleValue}`);
@@ -60,6 +59,7 @@ function numberPeopleInputFunc() {
   }
 }
 
+// Store the custom entered tip amount to variable tip as a decimal
 function customTipInput() {
   tip = parseFloat(tipPercentCustom.value / 100);
 
@@ -70,6 +70,7 @@ function customTipInput() {
   calcTip();
 }
 
+// Select tip percent, store value to tip as a decimal
 function handleClick(event) {
   tipPercent.forEach((val) => {
     val.classList.remove("selected");
@@ -82,7 +83,8 @@ function handleClick(event) {
   calcTip();
 }
 
-function resetTotals() {
+// Reset all values and Total amounts
+reset.addEventListener("pointerdown", function resetTotals() {
   tipAmount.textContent = "$0.00";
   totalDollarAmount.textContent = "$0.00";
   billValue = 0.0;
@@ -93,7 +95,7 @@ function resetTotals() {
   });
   document.querySelector(".errorMsg").style.display = "none";
   document.querySelector(".errorBorder").style.border = "none";
-}
+});
 
 // tipSelection();
 // resetTotals();
